@@ -1,15 +1,16 @@
 import React, { useEffect, useState } from 'react';
+import { Button, Modal } from 'react-bootstrap';
 import { useForm } from 'react-hook-form';
 import { Link, useParams } from 'react-router-dom';
-import fakeLocation from '../../fakeData/fakeLocation';
+import fakeData from '../../fakeData/fakeData';
 import Header from '../Header/Header';
 import './Booking.css';
 
 const Booking = () => {
     const { locationName } = useParams();
-
+    const [modalShow, setModalShow] = React.useState(false);
     const [locationInfo, setLocationInfo] = useState([]);
-    const newLocation = fakeLocation.find(loc => loc.name === locationName);
+    const newLocation = fakeData.find(loc => loc.name === locationName);
     useEffect(() => {
         setLocationInfo(newLocation);
     }, []);
@@ -40,19 +41,18 @@ const Booking = () => {
                         <input name="name" placeholder="Enter Your Name" ref={register({ required: true })} /> <br />
                         {errors.origin && <span style={{ color: 'red' }}>This field is required</span>}
                         <br />
-                        <label htmlFor="location">Location:</label>
-                        <input name="location" defaultValue="Dhaka" ref={register({ required: true })} /> <br />
+                        <label htmlFor="Service">Service:</label>
+                        <input name="service" defaultValue={locationInfo.name} ref={register({ required: true })} /> <br />
                         {errors.location && <span style={{ color: 'red' }}>This field is required</span>}
                         <br />
                         <div className="date-input">
-                            <label htmlFor="start">From:</label>
-                            <input type="date" id="start" name="trip-start" defaultValue={new Date()} min="2021-10-18" max="2022-10-25" />
+                            <label htmlFor="date">Date:</label>
+                            <input type="date" id="date" name="date" defaultValue={new Date()} min="2021-10-18" max="2022-10-25" />
                         </div>
                         <br />
-                        <Link to={`/nearestHotel/${locationInfo.name}`}>
-                            <input className="submit-btn" type="submit" value="Get Appointment" />
-                        </Link>
+                        <input className="submit-btn" type="submit" value="Get Appointment" onClick={() => setModalShow(true)} />
                     </form>
+                    <MyVerticallyCenteredModal show={modalShow} onHide={() => setModalShow(false)} />
                 </div>
             </div>
         </div>
@@ -60,3 +60,20 @@ const Booking = () => {
 };
 
 export default Booking;
+
+function MyVerticallyCenteredModal(props) {
+    return (
+        <Modal {...props} size="lg" aria-labelledby="contained-modal-title-vcenter" centered>
+            <Modal.Header closeButton>
+                <Modal.Title id="contained-modal-title-vcenter">Conformation</Modal.Title>
+            </Modal.Header>
+            <Modal.Body>
+                <h4>Congratulations!</h4>
+                <p>You Appointment is placed in our List. We will contact you soon.Stay with DocTime .thank you</p>
+            </Modal.Body>
+            <Modal.Footer>
+                <Button onClick={props.onHide}>Close</Button>
+            </Modal.Footer>
+        </Modal>
+    );
+}

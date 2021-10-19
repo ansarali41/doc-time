@@ -11,9 +11,11 @@ const Header = () => {
     // user logOutHandler
     const userLogOutHandler = () => {
         logOutHandler().then(res => {
+            localStorage.removeItem('user');
             setLoggedInUser(res);
         });
     };
+    const userDetails = localStorage.getItem('user');
     // dynamic header color
     const location = useLocation();
     const { locationName } = useParams();
@@ -45,18 +47,18 @@ const Header = () => {
                     <Link className="nav-link" to="/home">
                         Home
                     </Link>
-                    <Link className="nav-link" to="/progress">
-                        Destination
+                    <Link className="nav-link" to="/nearestHospital">
+                        Map
                     </Link>
-                    <Link className="nav-link" to="/progress">
-                        Blog
+                    <Link className="nav-link" to="/helpline">
+                        helpline
                     </Link>
-                    <Link className="nav-link" to="/progress">
+                    <Link className="nav-link" to="/contact">
                         Contact
                     </Link>
                     {loggedInUser.name && (
                         <Link className="nav-link" to="/">
-                            {loggedInUser.name}
+                            {loggedInUser.name || userDetails.name}
                         </Link>
                     )}
                     {loggedInUser.name ? (
