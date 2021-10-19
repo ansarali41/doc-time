@@ -1,7 +1,7 @@
 {
-    "name": "travel-guru",
+    "name": "doc-time",
     "version": "0.1.0",
-    "homepage": "http://ansarali41.github.io/react-gh-pages",
+    "homepage": "http://ansarali41.github.io/doctime",
     "private": true,
     "dependencies": {
         "@fortawesome/fontawesome-svg-core": "^1.2.36",
