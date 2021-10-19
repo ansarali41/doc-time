@@ -1,0 +1,11 @@
+.hotelsAndMap-container{
+    display: flex;
+    margin: 0px 60px;
+}
+.place-name-container{
+   
+}
+.google-map-container{
+    margin: 70px 30px;
+    border-radius: 15px;
+}

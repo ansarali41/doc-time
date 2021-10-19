@@ -1,0 +1,41 @@
+.booking-container {
+    display: flex;
+    margin-top: 60px;
+    margin-left: 150px;
+}
+.booking-location-details {
+    width: 600px;
+    margin-top: 60px;
+    color: white;
+}
+.booking-location-details h1 {
+    font-size: 60px;
+    text-align: center;
+}
+.booking-form {
+    border: 2px solid #e0a800;
+    border-radius: 10px;
+    width: 400px;
+    margin-left: 60px;
+    padding: 60px;
+    background-color: white;
+}
+.booking-form input {
+    width: 90%;
+    padding: 5px;
+    border-radius: 5px;
+}
+.submit-btn {
+    background-color: #e0a800;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    border: 1px solid gray;
+    border-radius: 8px;
+}
+.date-input-container {
+    display: flex;
+}
+.date-input {
+    margin: 'auto';
+    /* width: 47%; */
+}
